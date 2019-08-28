@@ -12,6 +12,8 @@ app.use(function(req, res, next) {
     next();
   });
 
+console.log(process.env['CLIENT_ID'])
+
 imgur.setClientId(process.env['CLIENT_ID'])
 
 app.post('/upload', upload.single('image'), (req, res) => {
