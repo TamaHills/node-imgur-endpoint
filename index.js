@@ -12,19 +12,17 @@ app.use(function(req, res, next) {
     next();
   });
 
-console.log(process.env['CLIENT_ID'])
-
 imgur.setClientId(process.env['CLIENT_ID'])
 
 app.post('/upload', upload.single('image'), (req, res) => {
     imgur.uploadFile(req.file.path)
     .then( (json) => {
         res.send(json.data.link);
-        fs.unlinkSync(req.file.path);
     })
     .catch( (err)  => {
         res.send(err.message);
-    });
+    })
+    .finally(() => fs.unlinkSync(req.file.path))
 })
 
 app.get('/', (req, res) => {
