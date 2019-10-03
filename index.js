@@ -3,7 +3,7 @@ const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });
 const imgur = require('imgur');
 const fs = require('fs');
-
+const path = require('path');
 const app = express();
 
 function logger(req, res, next) {
@@ -22,7 +22,7 @@ app.use(function (req, res, next) {
 imgur.setClientId(process.env['CLIENT_ID'])
 
 app.get('/', (req, res) => {
-    res.send('imgur upload')
+    res.sendFile(path.join(__dirname + '/upload.html'));
 })
 
 app.post('/upload', upload.single('image'), (req, res) => {
