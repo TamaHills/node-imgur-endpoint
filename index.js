@@ -22,6 +22,10 @@ app.use(function (req, res, next) {
 imgur.setClientId(process.env['CLIENT_ID'])
 
 app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname + '/index.html'));
+})
+
+app.get('/upload', (req, res) => {
     res.sendFile(path.join(__dirname + '/upload.html'));
 })
 
@@ -29,7 +33,7 @@ app.post('/upload', upload.single('image'), (req, res) => {
     imgur.uploadFile(req.file.path)
         .then(json => {
             console.log(`${(new Date).toString()} image published -> ${json.data.link}`)
-            res.send(req.query.html ? `<img src="${json.data.link}">` : json.data.link);
+            res.send(req.query.html ? `<img style="max-height: 90vh;" src="${json.data.link}">` : { url: json.data.link });
         })
         .catch(err => {
             res.send(err.message);

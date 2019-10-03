@@ -1,15 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js" ></script>
     <title>Imgur uploader</title>
 </head>
+
 <body>
-    <form action="/upload?html=true" method="POST" enctype="multipart/form-data">
+    <form id="upload">
         <input type="file" name="image" accept="image/*">
         <input type="submit">
     </form>
+    <script>
+        console.log('script running')
+        const form = document.getElementById('upload')
+        form.addEventListener('submit', (event) => {
+            event.preventDefault()
+            const data = new FormData()
+            data.append('image', event.target.children[0].files[0])
+            axios.post('/upload', data)
+                .then(res => {
+                    console.log(res)
+                    let image = document.createElement('IMG');
+                    image.src = res.data.url;
+                    document.body.appendChild(image);
+                })
+        })
+
+    </script>
 </body>
+
 </html>
