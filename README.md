@@ -21,7 +21,7 @@ A deployment already exists @ https://imgur-uploader-demo.herokuapp.com/
 
 ### Example Usage:
 
-Demo: https://imgur-uploader-demo.herokuapp.com/upload
+Demo: https://imgur-uploader-demo.herokuapp.com/demo
 
 #### HTML:
 

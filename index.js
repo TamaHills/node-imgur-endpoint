@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
 })
 
-app.get('/upload', (req, res) => {
+app.get('/demo', (req, res) => {
     res.sendFile(path.join(__dirname + '/upload.html'));
 })
 
