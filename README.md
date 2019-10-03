@@ -99,7 +99,7 @@ select an image to ujpload
 
 ![5](images/5.png)
 
-send the request, the server will send back a json object containing a url. If you add `html=true` to the query you will get back an html image tag
+send the request, the server will send back a json object containing a url `{"url": "https://i.imgur.com/aVszh85.png"}`. If you add `html=true` to the query you will get back an html image tag
 
 ![6](images/6.png)
 ![7](images/7.png)
