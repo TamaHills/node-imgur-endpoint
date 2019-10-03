@@ -29,7 +29,7 @@ app.post('/upload', upload.single('image'), (req, res) => {
     imgur.uploadFile(req.file.path)
         .then(json => {
             console.log(`${(new Date).toString()} image published -> ${json.data.link}`)
-            res.send(json.data.link);
+            res.send(req.query.html ? `<img src="${json.data.link}">` : json.data.link);
         })
         .catch(err => {
             res.send(err.message);
