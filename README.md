@@ -83,7 +83,7 @@ Demo: https://imgur-uploader-demo.herokuapp.com/demo
 </html>
 ```
 
-### REST CLIENT:
+#### REST CLIENT:
 
 change the body type to multipart
 
